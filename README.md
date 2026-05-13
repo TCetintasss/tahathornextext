@@ -1,44 +1,58 @@
-# TestTaha Baslangic Iskeleti
+# TestTaha Oyun Kabugu
 
-Bu repo, ekli oyun dokumanindaki ilk sprint odagina gore hazirlanmis bir acilis iskeletidir. Hedef; Netlify'de hizli test edilebilen, sonradan gercek cok oyunculu servislerle buyutulebilen bir temel kurmaktir.
+Bu proje, ekli oyun dokumanindaki ana modulleri tek bir calisan web uygulamasinda toplar. Hedef, Netlify'de hizli test edilebilen ama uzun vadede authoritative backend'e tasinabilecek bir temel kurmaktir.
 
-## Secilen teknoloji yigini
+## Bu surumde aktif olan moduller
 
-- `Hedef yigin: Vite + React + TypeScript`: oyun buyudukce bilesenlesme, tip guvenligi ve authoritative istemci-sunucu ayrimi icin en uygun yol.
-- `Mevcut calisir acilis: bagimliliksiz ES modules + HTML + CSS`: bu ortamda paket kaynagi kapali oldugu icin hemen acilabilen, Netlify'ye dogrudan atilabilen bir baslangic katmani kuruldu.
-- `Domain-first klasorleme`: gorsel katman ile oyun verisini ayirmak, sonradan authoritative backend gecisini kolaylastirmak icin.
-
-## Ilk surum kapsami
-
-- Giris ekrani
+- ID/Sifre giris ekrani
 - Loading ekrani
-- Ana operasyon paneli
-- Oyuncu hesap ozeti ve mock snapshot
-- Kaynaklar, bina durumlari, filo gorevleri ve cag ilerlemesi panelleri
+- Ana oyun arayuzu
+- Gezegen bina sistemi ve yukseltme kuyruklari
+- Gemi uretimi ve gorev rotalari
+- Kaynak ekonomisi, enerji dengesi ve kapasite sinirlari
+- Ticaret sistemi ve hizli emirler
+- Bot oyuncu davranislari
+- Bes cag ilerleme ekrani
+- Operasyon paneli, telemetry, teknik mimari ve veri modeli ozetleri
+
+## Teknoloji tercihi
+
+- Mevcut calisan kabuk: bagimliliksiz ES modules + HTML + CSS
+- Hedef sonraki adim: Vite + React + TypeScript
+
+Bu secim burada kasitli: paket kurulumu kapali oldugu icin calisan oyunu once sifir bagimlilikla cikardik. Sonraki iterasyonda ayni sistemler React istemcisine tasinabilir.
 
 ## Klasor yapisi
 
 ```text
 .
-├── netlify.toml
-├── src
-│   ├── data
-│   ├── ui
-│   └── styles
 ├── index.html
-└── README.md
+├── netlify.toml
+└── src
+    ├── core
+    ├── data
+    ├── styles
+    └── ui
 ```
 
-## Calistirma
+## Yerel acilis
+
+Statik olarak acilabilir:
 
 ```bash
-# Dosyayi dogrudan ac
-index.html
+python3 -m http.server 4173
 ```
 
-## Sonraki teknik adimlar
+Ardindan tarayicida `http://127.0.0.1:4173`
 
-1. Bu bagimliliksiz kabugu Vite + React + TypeScript tabanli istemciye tasimak
-2. Mock snapshot katmanini Netlify Function tabanli snapshot servisine cevirmek
-3. Auth akisina Netlify Identity veya harici kimlik katmani eklemek
-4. Gezegen uretim tick'i ve bina yukselme kuyrugunu authoritative servis olarak tasimak
+## Netlify notu
+
+- Build command: bos
+- Publish directory: `.`
+
+## Sonraki buyuk adimlar
+
+1. Authoritative backend ve snapshot servisi baglamak
+2. Gercek kimlik dogrulama eklemek
+3. Pazar ve gorev sonucunu istemciden alip sunucuya tasimak
+4. Savas, ittifak ve canli event katmanlarini acmak

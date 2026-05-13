@@ -1,43 +1,29 @@
 # TestTaha Oyun Kabugu
 
-Bu proje, ekli oyun dokumanindaki ana modulleri tek bir calisan web uygulamasinda toplar. Hedef, Netlify'de hizli test edilebilen ama uzun vadede authoritative backend'e tasinabilecek bir temel kurmaktir.
+Bu proje, oyun dokumanindaki ana modulleri ve 0.01v / 0.02v feedbacklerini tek calisan web uygulamasinda toplar.
 
 ## Bu surumde aktif olan moduller
 
-- ID/Sifre giris ekrani
-- Loading ekrani
-- Ana oyun arayuzu
+- Kayit ol / giris yap akisi
+- Profil alani ve gezegen adi degistirme
+- Gercek saatle senkron oyun saati
 - Gezegen bina sistemi ve yukseltme kuyruklari
-- Gemi uretimi ve gorev rotalari
-- Kaynak ekonomisi, enerji dengesi ve kapasite sinirlari
-- Ticaret sistemi ve hizli emirler
-- Bot oyuncu davranislari
-- Bes cag ilerleme ekrani
-- Operasyon paneli, telemetry, teknik mimari ve veri modeli ozetleri
+- Gemi uretimi, adet secimi ve tersane sinif limiti
+- Kesif zorunlulugu ile acilan gezegen rotalari
+- Ticaret gezegeni ve altin bazli pazar akisi
+- Operasyon ekraninda gidis-donus zamani ve kargo takibi
+- Harita ekraninda kesfedilen gezegenler, rakipler ve yoldaki filolar
+- Klan / savas gorunurlugu ve cag merdiveni
 
-## Teknoloji tercihi
+## Onemli kurallar
 
-- Mevcut calisan kabuk: bagimliliksiz ES modules + HTML + CSS
-- Hedef sonraki adim: Vite + React + TypeScript
-
-Bu secim burada kasitli: paket kurulumu kapali oldugu icin calisan oyunu once sifir bagimlilikla cikardik. Sonraki iterasyonda ayni sistemler React istemcisine tasinabilir.
-
-## Klasor yapisi
-
-```text
-.
-├── index.html
-├── netlify.toml
-└── src
-    ├── core
-    ├── data
-    ├── styles
-    └── ui
-```
+- Hurda pasif uretilmez; sadece yok olan gemiler veya hurda toplama seferlerinden gelir.
+- Kredi pasif uretilmez; premium satin alim kaynagidir.
+- Oyun saati gercek saat dilimi ile ayni akar.
+- Pazar alimlari altin uzerinden doner.
+- Ticaret gezegeni ayri akistir; ticaret gemileri geri cagirilmadan donmez.
 
 ## Yerel acilis
-
-Statik olarak acilabilir:
 
 ```bash
 python3 -m http.server 4173
@@ -50,9 +36,9 @@ Ardindan tarayicida `http://127.0.0.1:4173`
 - Build command: bos
 - Publish directory: `.`
 
-## Sonraki buyuk adimlar
+## Siradaki buyuk adimlar
 
-1. Authoritative backend ve snapshot servisi baglamak
-2. Gercek kimlik dogrulama eklemek
-3. Pazar ve gorev sonucunu istemciden alip sunucuya tasimak
-4. Savas, ittifak ve canli event katmanlarini acmak
+1. Gercek auth ve kalici oyuncu verisi baglamak
+2. Authoritative market ve rota servislerini sunucu tarafina tasimak
+3. Gercek savas sonucu, hasar ve hurda hesaplarini backend tarafina almak
+4. Cok oyunculu harita hareketlerini canli veriyle beslemek

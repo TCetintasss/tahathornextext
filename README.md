@@ -1,27 +1,29 @@
 # TestTaha Oyun Kabugu
 
-Bu proje, oyun dokumanindaki ana modulleri ve 0.01v / 0.02v feedbacklerini tek calisan web uygulamasinda toplar.
+Bu surum, `feedback 0.03v` sonrasinda eklenen prototip genislemelerini tek statik SPA icinde toplar ve oyun dokumanindaki `1, 5, 6, 7, 9, 10` basliklarini arayuzde daha gorunur hale getirir.
 
 ## Bu surumde aktif olan moduller
 
-- Kayit ol / giris yap akisi
-- Profil alani ve gezegen adi degistirme
-- Gercek saatle senkron oyun saati
-- Gezegen bina sistemi ve yukseltme kuyruklari
-- Gemi uretimi, adet secimi ve tersane sinif limiti
-- Kesif zorunlulugu ile acilan gezegen rotalari
-- Ticaret gezegeni ve altin bazli pazar akisi
-- Operasyon ekraninda gidis-donus zamani ve kargo takibi
-- Harita ekraninda kesfedilen gezegenler, rakipler ve yoldaki filolar
-- Klan / savas gorunurlugu ve cag merdiveni
+- Kayit, giris ve 3 adimli loading akisi
+- Gezegen, insaat, tersane, hurda tamiri, arastirma, pazar, harita, klan, sohbet, cag, raporlar ve profil ekranlari
+- Bina sistemi: 2 slotlu insaat kuyrugu, yalnizca ilk isin aktif islemesi, kaynak yetersizliginde tahmini birikme suresi, kredi ile hizlandirma
+- Gemi sistemi: kaynak toplama, ticaret, ana gemi, destek, hurda toplayici, paladyum tanker, altin tarayici ve 2 savas sinifi
+- Kaynak ekonomisi: demir, kristal, biyokutle, paladyum, altin, hurda, kredi ve enerji dengesi
+- 5 cag yapisi, cag atlama maliyetleri ve ilerleme paneli
+- Harita gorevleri: toplama, casusluk, saldiri, destek ve event gezegenleri
+- Savas raporlari, istihbarat raporlari, destek raporlari ve gorev gecmisi
+- Gunluk gorevler, sezon hedefleri, klan destek cagrilari ve sohbet
+- Bot oyuncu etkisi: pazar likiditesi, rota rekabeti ve denge botu hareketleri
+- Kredi paketleri: `30/$5`, `65/$10`, `140/$20`
 
-## Onemli kurallar
+## Oyun dokumanindaki ekstra basliklarin karsiligi
 
-- Hurda pasif uretilmez; sadece yok olan gemiler veya hurda toplama seferlerinden gelir.
-- Kredi pasif uretilmez; premium satin alim kaynagidir.
-- Oyun saati gercek saat dilimi ile ayni akar.
-- Pazar alimlari altin uzerinden doner.
-- Ticaret gezegeni ayri akistir; ticaret gemileri geri cagirilmadan donmez.
+1. Vizyon: ana gezegen ekraninda uretim + lojistik + enerji omurgasi ozetlenir.
+5. Bina sistemi: her bina kapasite modulu olarak ayrik kartta gosterilir.
+6. Gemi siniflari: roller, profiller ve ozel yetenekler tersane ekraninda aciklanir.
+7. Kaynak ekonomisi: enerji formulu ve uretim zinciri ozetleri panelde gorunur.
+9. Bot oyuncular: pazar ekraninda bot davranislari ve etkileri listelenir.
+10. UI/UX yapisi: giris, loading ve ana HUD akisi ayrik ekranlara bolundu.
 
 ## Yerel acilis
 
@@ -36,9 +38,9 @@ Ardindan tarayicida `http://127.0.0.1:4173`
 - Build command: bos
 - Publish directory: `.`
 
-## Siradaki buyuk adimlar
+## Sonraki buyuk adimlar
 
-1. Gercek auth ve kalici oyuncu verisi baglamak
-2. Authoritative market ve rota servislerini sunucu tarafina tasimak
-3. Gercek savas sonucu, hasar ve hurda hesaplarini backend tarafina almak
-4. Cok oyunculu harita hareketlerini canli veriyle beslemek
+1. Authoritative backend ve kalici state baglamak
+2. Gercek auth ve odeme dogrulamasini servis katmanina tasimak
+3. Cok oyunculu market eslesmesini istemci prototipinden ayirmak
+4. Tarayici bazli etkileşim testlerini ve UI cilasini genisletmek
